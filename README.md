@@ -71,3 +71,7 @@ Modern ve etkileşimli bir XOX (Tic Tac Toe) oyunu. Framer Motion animasyonları
 - 💫 **Neon**: Neon ve siber
 - 🌟 **Golden**: Altın ve lüks
 - 🌈 **Aurora**: Kuzey ışıkları
+
+
+https://github.com/user-attachments/assets/f79f54aa-9adf-4458-8c73-33ef0ccecf75
+
