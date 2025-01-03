@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --game-primary: 26 27 38;
+    --game-secondary: 122 162 247;
+    --game-accent: 255 158 100;
+    --game-light: 169 177 214;
+    --game-dark: 22 22 30;
+  }
+
+  body {
+    @apply bg-[rgb(var(--game-primary))] text-[rgb(var(--game-light))] min-h-screen;
+  }
+}
+
+@layer components {
+  .card {
+    @apply relative overflow-hidden p-8 rounded-2xl backdrop-blur-sm
+           border border-[rgb(var(--game-light)/0.1)]
+           bg-gradient-to-br from-[rgb(var(--game-dark)/0.8)] to-[rgb(var(--game-dark)/0.6)];
+  }
+
+  .card::before {
+    @apply content-[''] absolute inset-0 -z-10
+           bg-gradient-to-br from-[rgb(var(--game-secondary)/0.2)] to-[rgb(var(--game-accent)/0.2)]
+           opacity-0 transition-opacity duration-300;
+  }
+
+  .card:hover::before {
+    @apply opacity-100;
+  }
+
+  .glass-panel {
+    @apply bg-[rgb(var(--game-dark)/0.4)] backdrop-blur-md
+           border border-[rgb(var(--game-light)/0.1)]
+           rounded-2xl shadow-xl;
+  }
+
+  .glass-button {
+    @apply relative overflow-hidden
+           bg-[rgb(var(--game-dark)/0.4)] backdrop-blur-sm
+           border border-[rgb(var(--game-light)/0.1)]
+           rounded-xl transition-all duration-300
+           hover:bg-[rgb(var(--game-dark)/0.6)]
+           hover:border-[rgb(var(--game-light)/0.2)]
+           hover:shadow-[0_0_20px_rgba(var(--game-secondary),0.3)];
+  }
+
+  .gradient-border {
+    @apply relative rounded-xl overflow-hidden;
+  }
+
+  .gradient-border::before {
+    @apply content-[''] absolute inset-0 -z-10
+           bg-gradient-to-r from-[rgb(var(--game-secondary))] to-[rgb(var(--game-accent))]
+           opacity-0 transition-opacity duration-300;
+  }
+
+  .gradient-border:hover::before {
+    @apply opacity-100;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-[rgb(var(--game-secondary))] to-[rgb(var(--game-accent))]
+           bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl text-white font-semibold
+           bg-gradient-to-r from-[rgb(var(--game-secondary))] to-[rgb(var(--game-accent))]
+           hover:opacity-90 transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded-lg text-[rgb(var(--game-light)/0.7)] hover:text-[rgb(var(--game-light))]
+           border border-[rgb(var(--game-light)/0.1)] hover:border-[rgb(var(--game-light)/0.3)]
+           transition-all duration-300;
+  }
+
+  .btn-outline {
+    @apply px-4 py-2 rounded-lg text-[rgb(var(--game-light)/0.7)] hover:text-[rgb(var(--game-light))]
+           border border-[rgb(var(--game-light)/0.1)] hover:border-[rgb(var(--game-light)/0.3)]
+           hover:bg-[rgb(var(--game-light)/0.05)]
+           transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(var(--game-light), 0.1) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%,
+    100% {
+      filter: brightness(100%) blur(0);
+    }
+    50% {
+      filter: brightness(150%) blur(1px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  .animate-bounce-slow {
+    animation: bounce 2s infinite;
+  }
+
+  .animate-glow {
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 3s infinite;
+  }
+
+  .animate-gradient {
+    animation: gradient 8s linear infinite;
+  }
+
+  @keyframes glow {
+    from {
+      filter: brightness(100%);
+    }
+    to {
+      filter: brightness(150%);
+    }
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
+  }
+}
